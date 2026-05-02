@@ -1285,11 +1285,13 @@
       <!-- Form -->
       <div>
         <form class="survey-form" id="surveyForm"
-              action="https://formspree.io/f/siachut03"
+              action="https://formsubmit.co/siachut03@gmail.com"
               method="POST">
 
-          <input type="hidden" name="_replyto" value="siachut03@gmail.com">
-          <input type="hidden" name="_subject" value="New Adamia Survey Response">
+          <input type="hidden" name="_subject" value="New Adamia Survey Response 📊">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://adamia-website.marcin-ee5.workers.dev">
 
           <div class="form-title">Student Technology Survey</div>
 
@@ -1405,45 +1407,19 @@
 </footer>
 
 <script>
-// Handle survey form submission via Formspree -> siachut03@gmail.com
+// Survey form - submits to FormSubmit.co -> siachut03@gmail.com
 const form = document.getElementById('surveyForm');
 if (form) {
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+  form.addEventListener('submit', function(e) {
     const btn = document.getElementById('submitBtn');
     btn.textContent = 'Sending...';
     btn.disabled = true;
     btn.style.opacity = '0.7';
-
-    const data = new FormData(form);
-
-    try {
-      const res = await fetch('https://formspree.io/f/siachut03', {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        form.style.display = 'none';
-        const msg = document.getElementById('successMsg');
-        msg.style.display = 'block';
-        msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        btn.textContent = 'Submit Feedback';
-        btn.disabled = false;
-        btn.style.opacity = '1';
-        alert('Something went wrong. Please email us directly at siachut03@gmail.com');
-      }
-    } catch(err) {
-      btn.textContent = 'Submit Feedback';
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      alert('Connection error. Please email us at siachut03@gmail.com');
-    }
+    // Let the form submit naturally to FormSubmit.co
   });
 }
 
+// Smooth scroll nav links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
